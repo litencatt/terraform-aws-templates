@@ -1,0 +1,5 @@
+*.swp
+.terraform
+terraform.tfstate.info
+terraform.tfstate.backup
+terraform.tfvars
