@@ -36,3 +36,8 @@ resource "aws_route_table_association" "vpc-1-rta-1" {
   subnet_id      = "${aws_subnet.vpc-1-public-subnet.id}"
   route_table_id = "${aws_route_table.vpc-1-public-rt.id}"
 }
+
+resource "aws_network_interface" "web-server-ni" {
+  subnet_id = "${aws_subnet.vpc-1-public-subnet.id}"
+  private_ips = ["10.0.1.10"]
+}
