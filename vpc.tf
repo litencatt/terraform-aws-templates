@@ -18,6 +18,16 @@ resource "aws_subnet" "vpc-1-public-subnet" {
   }
 }
 
+resource "aws_subnet" "vpc-1-private-subnet" {
+  vpc_id            = "${aws_vpc.vpc-1.id}"
+  cidr_block        = "10.0.2.0/24"
+  availability_zone = "ap-northeast-1a"
+
+  tags {
+    Name = "vpc-1-private-subnet"
+  }
+}
+
 resource "aws_internet_gateway" "vpc-1-igw" {
   vpc_id = "${aws_vpc.vpc-1.id}"
 
