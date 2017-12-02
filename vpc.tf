@@ -37,7 +37,18 @@ resource "aws_route_table_association" "vpc-1-rta-1" {
   route_table_id = "${aws_route_table.vpc-1-public-rt.id}"
 }
 
-resource "aws_network_interface" "web-server-ni" {
-  subnet_id = "${aws_subnet.vpc-1-public-subnet.id}"
-  private_ips = ["10.0.1.10"]
+resource "aws_security_group" "web-sg" {
+  name   = "web-sg"
+  vpc_id = "${aws_vpc.vpc-1.id}"
+
+  ingress {
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  tags {
+    Name = "web-sg"
+  }
 }
