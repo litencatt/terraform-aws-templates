@@ -18,7 +18,5 @@ key_name   = "KEY_PAIR_NAME"
 
 Execute
 ```
-$ terraform plan
-
 $ terraform apply
 ```
