@@ -8,7 +8,7 @@ $ terraform init
 ```
 
 ## Usage
-Edit `terraform.tfvars.sample` and save as 'terraform.tfvars'.
+Edit `terraform.tfvars.sample` and save as `terraform.tfvars`.
 ```
 access_key = "AWS_ACCESS_KEY"
 secret_key = "AWS_SECRET_KEY"
