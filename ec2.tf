@@ -20,10 +20,9 @@ resource "aws_instance" "db-server" {
   subnet_id              = "${aws_subnet.vpc-1-private-subnet.id}"
   vpc_security_group_ids = ["${aws_security_group.db-sg.id}"]
 
-  private_ip             = "10.0.2.10"
+  private_ip = "10.0.2.10"
 
   tags {
     Name = "db-server"
   }
-
 }
