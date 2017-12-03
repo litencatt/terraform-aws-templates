@@ -1,10 +1,7 @@
 ## Installation
 ```
 $ brew install terraform
-
 $ git clone git@github.com:litencatt/terraform-aws-templates.git
-
-$ terraform init
 ```
 
 ## Usage
@@ -18,5 +15,7 @@ key_name   = "KEY_PAIR_NAME"
 
 Execute
 ```
+$ terraform init
+$ terraform plan
 $ terraform apply
 ```
