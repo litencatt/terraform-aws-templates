@@ -145,7 +145,7 @@ resource "aws_eip" "web" {
 }
 
 resource "aws_eip" "nat" {
-  vpc      = true
+  vpc = true
 }
 
 resource "aws_nat_gateway" "nat" {
