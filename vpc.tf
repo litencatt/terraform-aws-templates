@@ -125,3 +125,12 @@ resource "aws_eip" "web" {
   instance = "${aws_instance.web-server.id}"
   vpc      = true
 }
+
+resource "aws_eip" "nat" {
+  vpc      = true
+}
+
+resource "aws_nat_gateway" "nat" {
+  allocation_id = "${aws_eip.nat.id}"
+  subnet_id     = "${aws_subnet.vpc-1-public-subnet.id}"
+}
