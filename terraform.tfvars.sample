@@ -1,0 +1,4 @@
+access_key = "AWS_ACCESS_KEY"
+secret_key = "AWS_SECRET_KEY"
+region     = "ap-northeast-1"
+key_name   = "KEY_PAIR_NAME"
