@@ -49,9 +49,27 @@ resource "aws_route_table" "vpc-1-public-rt" {
   }
 }
 
+resource "aws_route_table" "vpc-1-private-rt" {
+  vpc_id = "${aws_vpc.vpc-1.id}"
+
+  route {
+    cidr_block = "0.0.0.0/0"
+    gateway_id = "${aws_nat_gateway.nat.id}"
+  }
+
+  tags {
+    Name = "vpc-1-private-rt"
+  }
+}
+
 resource "aws_route_table_association" "vpc-1-rta-1" {
   subnet_id      = "${aws_subnet.vpc-1-public-subnet.id}"
   route_table_id = "${aws_route_table.vpc-1-public-rt.id}"
+}
+
+resource "aws_route_table_association" "vpc-1-rta-2" {
+  subnet_id      = "${aws_subnet.vpc-1-private-subnet.id}"
+  route_table_id = "${aws_route_table.vpc-1-private-rt.id}"
 }
 
 resource "aws_security_group" "web-sg" {
@@ -124,4 +142,13 @@ resource "aws_security_group" "db-sg" {
 resource "aws_eip" "web" {
   instance = "${aws_instance.web-server.id}"
   vpc      = true
+}
+
+resource "aws_eip" "nat" {
+  vpc      = true
+}
+
+resource "aws_nat_gateway" "nat" {
+  allocation_id = "${aws_eip.nat.id}"
+  subnet_id     = "${aws_subnet.vpc-1-public-subnet.id}"
 }

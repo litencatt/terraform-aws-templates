@@ -11,6 +11,7 @@ resource "aws_instance" "web-server" {
   tags {
     Name = "web-server"
   }
+}
 
 resource "aws_instance" "db-server" {
   ami                    = "ami-da9e2cbc"
@@ -18,6 +19,7 @@ resource "aws_instance" "db-server" {
   key_name               = "${var.key_name}"
   subnet_id              = "${aws_subnet.vpc-1-private-subnet.id}"
   vpc_security_group_ids = ["${aws_security_group.db-sg.id}"]
+
   private_ip             = "10.0.2.10"
 
   tags {
