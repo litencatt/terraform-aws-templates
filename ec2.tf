@@ -1,5 +1,5 @@
 resource "aws_instance" "web-server" {
-  ami                    = "ami-da9e2cbc"
+  ami                    = "${data.aws_ami.amazon_linux.id}"
   instance_type          = "t2.micro"
   key_name               = "${var.key_name}"
   subnet_id              = "${aws_subnet.vpc-1-public-subnet.id}"
@@ -14,7 +14,7 @@ resource "aws_instance" "web-server" {
 }
 
 resource "aws_instance" "db-server" {
-  ami                    = "ami-da9e2cbc"
+  ami                    = "${data.aws_ami.amazon_linux.id}"
   instance_type          = "t2.micro"
   key_name               = "${var.key_name}"
   subnet_id              = "${aws_subnet.vpc-1-private-subnet.id}"
